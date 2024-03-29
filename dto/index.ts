@@ -5,11 +5,15 @@ import {
     IsNumber,
     IsString,
 } from "class-validator";
+import { Transform } from "class-transformer";
 
-export class PhoneNumberDTO {
-    @IsPhoneNumber(undefined, { message: "Invalid phone number" })
-    @IsNumber()
+export default class RequestDTO {
     @IsOptional()
+    @IsNumber()
+    @Transform(({ value }) => {
+        return String(value);
+    })
+    @IsPhoneNumber("IN", { message: "Invalid phone number" })
     phoneNumber: string;
 
     @IsEmail(undefined, { message: "Invalid phone number" })

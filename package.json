@@ -6,7 +6,7 @@
   "main": "app.js",
   "scripts": {
     "start": "node app.js",
-    "watch": "nodemon app.js",
+    "watch": "nodemon --exec ts-node app.ts",
     "migration:make": "knex migrate:make",
     "migrate": "knex migrate:latest"
   },
