@@ -13,14 +13,15 @@ const middleware = async (req, res, next) => {
 
     // let hasPhone = false,
     //     hasEmail = false;
+    req.body.info = {};
 
     if (body?.phoneNumber) {
         req.body.phoneNumber = Number(body.phoneNumber);
-        req.info.hasPhone = true;
+        req.body.info.hasPhone = true;
     }
 
     if (body?.email) {
-        req.info.hasEmail = true;
+        req.body.info.hasEmail = true;
     }
 
     // if (hasPhone && hasEmail) {
@@ -28,7 +29,7 @@ const middleware = async (req, res, next) => {
     //     // req.info.
     // }
 
-    // res.json("success");
+    res.json("success");
     next();
 };
 

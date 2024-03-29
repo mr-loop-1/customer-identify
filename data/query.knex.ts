@@ -1,4 +1,4 @@
-const { knex } = require("../database");
+import { knex } from "../database";
 
 export const getCustomer = async (propName, value, linkPrecendence) => {
     const query = knex("customers");
