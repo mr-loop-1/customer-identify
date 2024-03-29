@@ -1,17 +1,19 @@
-const path = require("path");
+import type { Knex } from "knex";
+import path from "path";
 
-module.exports = {
+const config: { [key: string]: Knex.Config } = {
     development: {
         client: "mysql2",
         connection: {
             host: process.env.DB_HOST,
-            port: process.env.DB_PORT,
+            port: 123434,
             user: process.env.DB_USER,
             password: process.env.DB_PASSWORD,
             database: process.env.DB_DATABASE,
         },
         migrations: {
             directory: path.join(__dirname, "database/migrations"),
+            tableName: "knex_migrations",
         },
     },
 
@@ -19,7 +21,7 @@ module.exports = {
         client: "mysql2",
         connection: {
             host: process.env.DB_HOST,
-            port: process.env.DB_PORT,
+            port: 1234,
             user: process.env.DB_USER,
             password: process.env.DB_PASSWORD,
             database: process.env.DB_DATABASE,
@@ -34,3 +36,5 @@ module.exports = {
         },
     },
 };
+
+export default config;
