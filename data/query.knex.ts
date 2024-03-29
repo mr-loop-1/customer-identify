@@ -1,7 +1,12 @@
 import { knex } from "../database";
+import { ICustomer } from "../interfaces";
 
-export const getCustomer = async (propName, value, linkPrecendence) => {
-    const query = knex("customers");
+export const getCustomer = async (
+    propName,
+    value,
+    linkPrecendence
+): Promise<ICustomer | undefined> => {
+    const query = knex<ICustomer>("customers");
 
     query.where(propName, value);
 
@@ -10,7 +15,9 @@ export const getCustomer = async (propName, value, linkPrecendence) => {
         query.first();
     }
 
-    return await query;
+    const customer = await query.first();
+
+    return customer;
 };
 
 export const createCustomer = async (data) => {};

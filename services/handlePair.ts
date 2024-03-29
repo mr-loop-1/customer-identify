@@ -1,5 +1,6 @@
 import { getCustomer } from "../data/query.knex";
-import { IRequest } from "../interfaces/request";
+import { ICustomer } from "../interfaces";
+import { IRequest } from "../interfaces";
 
 const handlePair = async (inputs: IRequest) => {
     const phoneMatchCustomer = await getCustomer(
