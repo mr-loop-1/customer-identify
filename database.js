@@ -1,6 +1,6 @@
 const Knex = require("knex");
 
-const knex = Knex({
+exports.knex = Knex({
     client: "mysql2",
     connection: {
         host: process.env.DB_HOST,
@@ -10,5 +10,3 @@ const knex = Knex({
         database: process.env.DB_NAME,
     },
 });
-
-exports.database = knex;
