@@ -5,15 +5,16 @@ import {
     IsNumber,
     IsString,
 } from "class-validator";
-import { Transform } from "class-transformer";
+import { Transform, Type } from "class-transformer";
 
 export default class RequestDTO {
     @IsOptional()
-    @IsNumber()
+    @IsPhoneNumber("IN", { message: "Invalid phone number" })
     @Transform(({ value }) => {
+        console.log("Transformed value:", typeof value, typeof String(value));
         return String(value);
     })
-    @IsPhoneNumber("IN", { message: "Invalid phone number" })
+    // @IsNumber()
     phoneNumber: string;
 
     @IsEmail(undefined, { message: "Invalid phone number" })
