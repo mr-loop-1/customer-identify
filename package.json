@@ -1,10 +1,13 @@
 {
-  "name": "identify1",
+  "name": "identify-bitespeed",
   "version": "1.0.0",
   "description": "for the bitespeed",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node app.js",
+    "watch": "nodemon app.js",
+    "migration:make": "knex migrate:make",
+    "migrate": "knex migrate:latest"
   },
   "repository": {
     "type": "git",
@@ -12,16 +15,18 @@
   },
   "author": "Abdul Samad",
   "license": "GPL-3.0-or-later",
-  "bugs": {
-    "url": "https://github.com/mr-loop-1/customer-identify/issues"
-  },
   "homepage": "https://github.com/mr-loop-1/customer-identify#readme",
+  "engines": {
+    "node": ">=18.12.0",
+    "npm": ">=8.19.2"
+  },
   "dependencies": {
     "body-parser": "^1.20.2",
     "cors": "^2.8.5",
     "dotenv": "^16.4.5",
     "express": "^4.19.2",
     "knex": "^3.1.0",
-    "mysql2": "^3.9.3"
+    "mysql2": "^3.9.3",
+    "path": "^0.12.7"
   }
 }
