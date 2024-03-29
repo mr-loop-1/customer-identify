@@ -1,5 +1,5 @@
 import { knex } from "../database";
-import { ICustomer } from "../interfaces";
+import { ICustomer, ICustomerInsert } from "../interfaces";
 
 export const getCustomer = async (
     propName: string,
@@ -14,17 +14,13 @@ export const getCustomer = async (
         query.where("linkPrecedence", linkPrecendence);
     }
 
-    const customer = await query.first();
-
-    return customer;
+    return await query.first();
 };
 
-export const createCustomer = async (data) => {
+export const createCustomer = async (data: ICustomerInsert): Promise<void> => {
     const query = knex<ICustomer>("customers");
+    query.insert(data);
+    await query;
 
-    const customer = await query.first();
-
-    return customer;
+    return Promise.resolve();
 };
-
-export const changePrecedence = async (data) => {};

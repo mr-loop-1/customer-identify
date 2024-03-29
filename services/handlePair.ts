@@ -1,10 +1,5 @@
-import {
-    changePrecedence,
-    createCustomer,
-    getCustomer,
-} from "../data/query.knex";
-import { ICustomer } from "../interfaces";
-import { IRequest } from "../interfaces";
+import { createCustomer, getCustomer } from "../data/query.knex";
+import { IRequest, LinkPrecedenceEnum } from "../interfaces";
 import handleDivergingPair from "./handleDivergingPair";
 
 const handlePair = async (inputs: IRequest) => {
@@ -30,7 +25,7 @@ const handlePair = async (inputs: IRequest) => {
             phoneNumber: inputs.phoneNumber,
             email: inputs.email,
             linkedId: phoneMatchCustomer.id,
-            linkedPrecedence: "secondary",
+            linkPrecedence: LinkPrecedenceEnum.secondary,
         };
         await createCustomer(newCustomer);
     } else if (emailMatchCustomer) {
@@ -38,11 +33,16 @@ const handlePair = async (inputs: IRequest) => {
             phoneNumber: inputs.phoneNumber,
             email: inputs.email,
             linkedId: emailMatchCustomer.id,
-            linkedPrecedence: "secondary",
+            linkPrecedence: LinkPrecedenceEnum.secondary,
         };
         await createCustomer(newCustomer);
     } else {
-        //* Create new primary doc
+        const newCustomer = {
+            phoneNumber: inputs.phoneNumber,
+            email: inputs.email,
+            linkPrecedence: LinkPrecedenceEnum.primary,
+        };
+        await createCustomer(newCustomer);
     }
 };
 
