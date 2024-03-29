@@ -1,0 +1,19 @@
+{
+  "name": "identify1",
+  "version": "1.0.0",
+  "description": "for the bitespeed",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mr-loop-1/customer-identify.git"
+  },
+  "author": "Abdul Samad",
+  "license": "GPL-3.0-or-later",
+  "bugs": {
+    "url": "https://github.com/mr-loop-1/customer-identify/issues"
+  },
+  "homepage": "https://github.com/mr-loop-1/customer-identify#readme"
+}
