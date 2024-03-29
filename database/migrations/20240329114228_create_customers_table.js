@@ -11,7 +11,7 @@ exports.up = async function (knex) {
             table.bigIncrements("id").primary();
             table.string("phoneNumber").index().nullable();
             table.string("email").index().nullable();
-            table.integer("linkedId").nullable();
+            table.integer("linkedId").nullable().index();
             table
                 .enum("linkPrecedence", ["primary", "secondary"])
                 .defaultTo("primary");
