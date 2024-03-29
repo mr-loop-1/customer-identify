@@ -1,9 +1,11 @@
+import handlePair from "../services/handlePair.ts";
 import { getCustomer } from "./../data/query.knex.ts";
 
 const controller = async (req, res, next) => {
     if (req.info.hasPhone && req.info.hasEmail) {
         // both are present
-        const await handlePair(req.body);
+        await handlePair(req.body);
+        //? Not fetching data above since concurrent requests could render it outdated
     } else {
         // get the prop name
         // await getCustomer(req.info.hasPhone ? "phone" : "email");
