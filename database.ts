@@ -1,4 +1,4 @@
-const Knex = require("knex");
+import Knex from "knex";
 
 exports.knex = Knex({
     client: "mysql2",
