@@ -1,6 +1,6 @@
 const { knex } = require("../database");
 
-exports.identifyCustomer = async (propName, value, linkPrecendence) => {
+export const getCustomer = async (propName, value, linkPrecendence) => {
     const query = knex("customers");
 
     query.where(propName, value);
@@ -12,3 +12,7 @@ exports.identifyCustomer = async (propName, value, linkPrecendence) => {
 
     return await query;
 };
+
+export const createCustomer = async (data) => {};
+
+export const changePrecedence = async (data) => {};
