@@ -1,7 +1,7 @@
 import express, { Request, Response } from "express";
 import bodyParser from "body-parser";
 import cors from "cors";
-import identifyRouter from "./routes.ts";
+import identifyRouter from "./routes/index.ts";
 
 const app = express();
 
