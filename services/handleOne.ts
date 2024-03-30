@@ -1,5 +1,5 @@
-import { createCustomer, getCustomer } from "../data/query.knex";
-import { LinkPrecedenceEnum } from "../interfaces";
+import { createCustomer, getCustomer } from "../data/index.ts";
+import { LinkPrecedenceEnum } from "../interfaces/index.ts";
 
 const handleOne = async (propName, inputs): Promise<void> => {
     const matchCustomer = await getCustomer(

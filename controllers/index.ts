@@ -1,8 +1,7 @@
-import { identifyCustomer } from "../data/identify.knex.ts";
+import { identifyCustomer } from "../data/index.ts";
 import handleOne from "../services/handleOne.ts";
 import handlePair from "../services/handlePair.ts";
 import transform from "../transformer/index.ts";
-import { getCustomer } from "./../data/query.knex.ts";
 
 const controller = async (req, res, next) => {
     let results, data;
@@ -24,10 +23,13 @@ const controller = async (req, res, next) => {
             await handleOne("email", req.body.email);
             results = await identifyCustomer("email", req.body?.email);
         }
-        data = transform(results);
-    } catch (err) {}
+        console.log(results);
+        // data = transform(results);
+    } catch (err) {
+        res.status(500).json({ message: "Something went wrong!" });
+    }
 
-    res.status(200).json(data);
+    res.status(200).json();
 };
 
 export default controller;

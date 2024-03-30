@@ -1,6 +1,6 @@
-import { createCustomer, getCustomer } from "../data/query.knex";
-import { IRequest, LinkPrecedenceEnum } from "../interfaces";
-import handleDivergingPair from "./handleDivergingPair";
+import { createCustomer, getCustomer } from "../data/index.ts";
+import { IRequest, LinkPrecedenceEnum } from "../interfaces/index.ts";
+import handleDivergingPair from "./handleDivergingPair.ts";
 
 const handlePair = async (inputs: IRequest): Promise<void> => {
     const phoneMatchCustomer = await getCustomer(

@@ -1,5 +1,5 @@
-import { knex } from "../database";
-import { ICustomer } from "../interfaces";
+import { knex } from "../database.ts";
+import { ICustomer } from "../interfaces/index.ts";
 
 export const updateLinkSecondary = async (
     primaryId,

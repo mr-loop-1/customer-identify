@@ -1,5 +1,5 @@
-import { updateLinkMany, updateLinkSecondary } from "../data/link.knex";
-import { ICustomer } from "../interfaces";
+import { updateLinkMany, updateLinkSecondary } from "../data/index.ts";
+import { ICustomer } from "../interfaces/index.ts";
 
 const handleDivergingPair = async (
     customer1: ICustomer,
