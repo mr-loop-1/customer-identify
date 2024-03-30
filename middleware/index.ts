@@ -22,10 +22,10 @@ const middleware = async (req: Request, res: Response, next: NextFunction) => {
     //     hasEmail = false;
     // req.body.info = {};
 
-    if (body?.phoneNumber) {
-        req.body.phoneNumber = Number(body.phoneNumber);
-        // req.body.info.hasPhone = true;
-    }
+    // if (body?.phoneNumber) {
+    //     req.body.phoneNumber = Number(body.phoneNumber);
+    //     // req.body.info.hasPhone = true;
+    // }
 
     // if (body?.email) {
     //     req.body.info.hasEmail = true;

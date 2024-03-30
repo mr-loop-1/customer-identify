@@ -3,7 +3,7 @@ import { ICustomer, ICustomerInsert } from "../interfaces/index";
 
 export const getCustomer = async (
     propName: string,
-    value: string | number
+    value: string
 ): Promise<ICustomer | undefined> => {
     const query = knex<ICustomer>("customers");
 

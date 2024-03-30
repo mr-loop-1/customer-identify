@@ -1,7 +1,7 @@
 export interface IResponse {
     contact: {
         primaryContatctId: number;
-        phoneNumbers: (number | undefined)[];
+        phoneNumbers: (string | undefined)[];
         emails: (string | undefined)[];
         secondaryContactIds: (number | undefined)[];
     };

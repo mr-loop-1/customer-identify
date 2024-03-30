@@ -20,7 +20,7 @@ export const getPrimaryId = (customer: ICustomer): number => {
 
 export const checkPairTogether = async (
     primaryCustomer: ICustomer,
-    phoneNumber: number,
+    phoneNumber: string,
     email: string
 ): Promise<boolean> => {
     if (

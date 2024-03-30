@@ -17,4 +17,6 @@ app.use((req: Request, res: Response) => {
     res.status(404).json("Only /identify is defined");
 });
 
-app.listen(process.env.PORT || 3500);
+app.listen(process.env.PORT || 3500, () => {
+    console.log("Server is running");
+});

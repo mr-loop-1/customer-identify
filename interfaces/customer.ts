@@ -5,7 +5,7 @@ export enum LinkPrecedenceEnum {
 
 export interface ICustomer {
     id: number;
-    phoneNumber?: number;
+    phoneNumber?: string;
     email?: string;
     linkedId: number;
     linkPrecedence: LinkPrecedenceEnum;
@@ -15,7 +15,7 @@ export interface ICustomer {
 }
 
 export interface ICustomerInsert {
-    phoneNumber?: number;
+    phoneNumber?: string;
     email?: string;
     linkedId?: number;
     linkPrecedence: LinkPrecedenceEnum;
@@ -24,5 +24,5 @@ export interface ICustomerInsert {
 export interface ICustomerFull extends ICustomer {
     secondaryId?: number;
     pairEmail?: string;
-    pairPhoneNumber?: number;
+    pairPhoneNumber?: string;
 }

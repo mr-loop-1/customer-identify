@@ -4,7 +4,7 @@ import { checkPairTogether, getPrimaryCustomer, getPrimaryId } from "./utils";
 import handleDivergingPair from "./handleDivergingPair";
 
 const handlePair = async (
-    inputs: IRequest & { phoneNumber: number; email: string }
+    inputs: IRequest & { phoneNumber: string; email: string }
 ): Promise<number | undefined> => {
     const phoneMatchCustomer = await getCustomer(
         "phoneNumber",
