@@ -1,5 +1,5 @@
 // import { IRequest } from "../interfaces/request";
-import RequestDTO from "./../dto/index.ts";
+import RequestDTO from "./../dto/index";
 import { plainToClass } from "class-transformer";
 import { validate } from "class-validator";
 
@@ -29,7 +29,7 @@ const middleware = async (req, res, next) => {
     //     // req.info.
     // }
 
-    res.json("success");
+    // res.json("success");
     next();
 };
 

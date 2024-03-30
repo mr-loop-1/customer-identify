@@ -1,5 +1,4 @@
-const { onUpdateTrigger, timestamps } = require("../timestamps");
-
+const { timestamps, onUpdateTrigger } = require("./../timestamps");
 /**
  * @param { import("knex").Knex } knex
  * @returns { Promise<void> }
@@ -11,16 +10,21 @@ exports.up = async function (knex) {
             table.bigIncrements("id").primary();
             table.string("phoneNumber").index().nullable();
             table.string("email").index().nullable();
-            table.integer("linkedId").nullable();
+            table.bigInteger("linkedId").unsigned().index().nullable();
             table
-                .enum("linkPrecedence", ["primary", "secondary"])
-                .defaultTo("primary");
+                .foreign("linkedId")
+                .references("id")
+                .inTable("customers")
+                .onDelete("CASCADE");
+            table.enum("linkPrecedence", ["primary", "secondary"]);
             table.dateTime("deletedAt").nullable();
             timestamps(knex, table);
         }
     );
-    await knex.raw(onUpdateTrigger("users"));
+    await knex.raw(onUpdateTrigger("customers"));
     return migration;
 };
 
-exports.down = function (knex) {};
+exports.down = async function (knex) {
+    await knex.schema.dropTable("customers");
+};

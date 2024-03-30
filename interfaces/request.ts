@@ -1,4 +1,4 @@
 export interface IRequest {
-    phoneNumber?: string;
+    phoneNumber?: number;
     email?: string;
 }

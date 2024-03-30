@@ -1,6 +1,6 @@
 import { Router } from "express";
-import middleware from "./../middleware/index.ts";
-import controller from "../controllers/index.ts";
+import middleware from "./../middleware/index";
+import controller from "../controllers/index";
 
 const router = Router();
 

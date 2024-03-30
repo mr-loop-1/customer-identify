@@ -1,14 +1,34 @@
 import { knex } from "../database";
+import {
+    ICustomer,
+    ICustomerFull,
+    LinkPrecedenceEnum,
+} from "../interfaces/index";
 
-export const identifyCustomer = async (propName, value, linkPrecendence) => {
-    const query = knex("customers");
+export const identifyCustomer = async (
+    primaryId: number,
+    includePair: boolean = false
+): Promise<ICustomerFull[]> => {
+    const query = knex.select(
+        "mainCustomer.*",
+        "linkCustomer.id AS secondaryId"
+    );
 
-    query.where(propName, value);
+    // if (includePair) {
+    query.select(
+        "linkCustomer.email AS pairEmail",
+        "linkCustomer.phoneNumber AS pairPhoneNumber"
+    );
+    // }
 
-    if (linkPrecendence) {
-        query.where("linkPrecedence", linkPrecendence);
-        query.first();
-    }
-
+    query
+        .from("customers AS mainCustomer")
+        .where(`mainCustomer.id`, primaryId)
+        .where("mainCustomer.linkPrecedence", LinkPrecedenceEnum.primary) //* for safety
+        .leftJoin(
+            "customers AS linkCustomer",
+            "mainCustomer.id",
+            "linkCustomer.linkedId"
+        );
     return await query;
 };

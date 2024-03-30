@@ -1,10 +1,12 @@
 import express, { Request, Response } from "express";
 import bodyParser from "body-parser";
 import cors from "cors";
-import identifyRouter from "./routes/index.ts";
+import identifyRouter from "./routes/index";
+import { config } from "dotenv";
 
 const app = express();
 
+config();
 app.use(cors());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
