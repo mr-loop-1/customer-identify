@@ -1,7 +1,7 @@
 {
   "name": "identify-bitespeed",
   "version": "1.0.0",
-  "description": "for the bitespeed",
+  "description": "for assignemnt",
   "main": "app.js",
   "scripts": {
     "build": "rimraf build && tsc",
