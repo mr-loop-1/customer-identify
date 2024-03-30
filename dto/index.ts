@@ -1,11 +1,22 @@
-import { IsEmail, IsPhoneNumber, IsOptional, IsString } from "class-validator";
+import {
+    IsEmail,
+    IsPhoneNumber,
+    IsOptional,
+    IsString,
+    ValidationError,
+} from "class-validator";
 import { Transform } from "class-transformer";
 
 export default class RequestDTO {
     @IsPhoneNumber("IN", { message: "Invalid phone number" })
     @Transform(({ value }: { value: Number }) => {
         if (typeof value !== "number") {
-            throw new Error("Phone number must be a number");
+            const error = new ValidationError();
+            error.property = "phoneNumber";
+            error.constraints = {
+                transformError: "phoneNumber must be a number",
+            };
+            throw error;
         }
         return String(value);
     })

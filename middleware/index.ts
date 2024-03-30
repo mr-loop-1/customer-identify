@@ -5,11 +5,16 @@ import { plainToClass } from "class-transformer";
 import { validate } from "class-validator";
 
 const middleware = async (req: Request, res: Response, next: NextFunction) => {
-    const body = plainToClass(RequestDTO, req.body);
-    const errors = await validate(body);
+    let body;
+    try {
+        body = plainToClass(RequestDTO, req.body);
 
-    if (errors.length > 0) {
-        return res.status(400).json({ errors });
+        const errors = await validate(body);
+        if (errors.length > 0) {
+            return res.status(400).json({ errors });
+        }
+    } catch (err) {
+        return res.status(400).json({ err });
     }
 
     if (!body?.email && !body?.phoneNumber) {
@@ -22,14 +27,6 @@ const middleware = async (req: Request, res: Response, next: NextFunction) => {
     //     hasEmail = false;
     // req.body.info = {};
 
-    // if (body?.phoneNumber) {
-    //     req.body.phoneNumber = Number(body.phoneNumber);
-    //     // req.body.info.hasPhone = true;
-    // }
-
-    // if (body?.email) {
-    //     req.body.info.hasEmail = true;
-    // }
     next();
 };
 
