@@ -7,7 +7,8 @@
     "build": "rimraf build && tsc",
     "watch": "nodemon --exec ts-node app.ts",
     "migration:make": "knex migrate:make",
-    "migrate": "knex migrate:latest"
+    "migrate": "knex migrate:latest",
+    "start": "node ./build/app.js"
   },
   "repository": {
     "type": "git",
