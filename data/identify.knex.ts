@@ -14,12 +14,12 @@ export const identifyCustomer = async (
         "linkCustomer.id AS secondaryId"
     );
 
-    if (includePair) {
-        query.select(
-            "linkCustomer.email AS pairEmail",
-            "linkCustomer.phoneNumber AS pairPhoneNumber"
-        );
-    }
+    // if (includePair) {
+    query.select(
+        "linkCustomer.email AS pairEmail",
+        "linkCustomer.phoneNumber AS pairPhoneNumber"
+    );
+    // }
 
     query
         .from("customers AS mainCustomer")

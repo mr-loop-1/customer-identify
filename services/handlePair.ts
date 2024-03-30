@@ -25,23 +25,22 @@ const handlePair = async (
             //* chain others too into that - relink chain
             primaryId = await handleDivergingPair(customer1, customer2);
         } else {
-            const hasPairTogether = await checkPairTogether(
-                customer1,
-                inputs.phoneNumber,
-                inputs.email
-            );
-            if (hasPairTogether) {
-                primaryId = customer1.id;
-            } else {
-                const newCustomer = {
-                    phoneNumber: inputs.phoneNumber,
-                    email: inputs.email,
-                    linkedId: customer1.id,
-                    linkPrecedence: LinkPrecedenceEnum.secondary,
-                };
-                const customer = await createCustomer(newCustomer);
-                primaryId = customer?.id;
-            }
+            // const hasPairTogether = await checkPairTogether(
+            //     customer1,
+            //     inputs.phoneNumber,
+            //     inputs.email
+            // );
+            // if (hasPairTogether) {
+            primaryId = customer1.id;
+            // } else {
+            //     const newCustomer = {
+            //         phoneNumber: inputs.phoneNumber,
+            //         email: inputs.email,
+            //         linkedId: customer1.id,
+            //         linkPrecedence: LinkPrecedenceEnum.secondary,
+            //     };
+            //     primaryId = await createCustomer(newCustomer);
+            // }
         }
         primaryId = customer1?.id;
     } else if (phoneMatchCustomer) {
@@ -68,8 +67,7 @@ const handlePair = async (
             email: inputs.email,
             linkPrecedence: LinkPrecedenceEnum.primary,
         };
-        const customer = await createCustomer(newCustomer);
-        primaryId = customer?.id;
+        primaryId = await createCustomer(newCustomer);
     }
 
     return primaryId;

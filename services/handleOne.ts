@@ -11,9 +11,9 @@ const handleOne = async (propName, inputs): Promise<number | undefined> => {
         [propName]: inputs[propName],
         linkPrecedence: LinkPrecedenceEnum.primary,
     };
-    const customer = await createCustomer(newCustomer);
+    const customerId = await createCustomer(newCustomer);
 
-    return customer?.id;
+    return customerId;
 };
 
 export default handleOne;

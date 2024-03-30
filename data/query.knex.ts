@@ -29,7 +29,7 @@ export const getCustomerById = async (
 
 export const createCustomer = async (
     data: ICustomerInsert
-): Promise<ICustomer | undefined> => {
+): Promise<number> => {
     const query = knex("customers");
     query.insert<number[]>(data);
 
