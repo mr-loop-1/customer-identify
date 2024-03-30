@@ -2,7 +2,7 @@ import { createCustomer, getCustomer } from "../data/query.knex";
 import { IRequest, LinkPrecedenceEnum } from "../interfaces";
 import handleDivergingPair from "./handleDivergingPair";
 
-const handlePair = async (inputs: IRequest) => {
+const handlePair = async (inputs: IRequest): Promise<void> => {
     const phoneMatchCustomer = await getCustomer(
         "phoneNumber",
         inputs.phoneNumber,
@@ -44,6 +44,8 @@ const handlePair = async (inputs: IRequest) => {
         };
         await createCustomer(newCustomer);
     }
+
+    return Promise.resolve();
 };
 
 export default handlePair;
