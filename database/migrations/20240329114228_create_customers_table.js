@@ -17,7 +17,6 @@ exports.up = async function (knex) {
                 .inTable("customers")
                 .onDelete("CASCADE");
             table.enum("linkPrecedence", ["primary", "secondary"]);
-            // .defaultTo("primary");
             table.dateTime("deletedAt").nullable();
             timestamps(knex, table);
         }

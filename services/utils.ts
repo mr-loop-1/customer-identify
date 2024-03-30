@@ -1,4 +1,4 @@
-import { getCustomer, getCustomerById, identifyCustomer } from "../data/index";
+import { getCustomerById, identifyCustomer } from "../data/index";
 import { ICustomer, LinkPrecedenceEnum } from "../interfaces/index";
 
 export const getPrimaryCustomer = async (

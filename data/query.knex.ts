@@ -8,7 +8,6 @@ import {
 export const getCustomer = async (
     propName: string,
     value: any
-    // linkPrecendence: string
 ): Promise<ICustomer | undefined> => {
     const query = knex<ICustomer>("customers");
 

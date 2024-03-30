@@ -13,7 +13,6 @@ const handleDivergingPair = async (
     const primaryId = olderCustomer.id;
     const danglingId = newCustomer.id;
 
-    //* link id of both newCustomer and its linkes Customers changed to olderCustomer id
     await updateLinkMany(primaryId, danglingId);
     await updateLinkSecondary(primaryId, danglingId);
 

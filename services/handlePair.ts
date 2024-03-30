@@ -21,8 +21,6 @@ const handlePair = async (
         const customer1 = await getPrimaryCustomer(phoneMatchCustomer),
             customer2 = await getPrimaryCustomer(emailMatchCustomer);
         if (customer1.id !== customer2.id) {
-            //* convert younger into secondary
-            //* chain others too into that - relink chain
             primaryId = await handleDivergingPair(customer1, customer2);
         } else {
             // const hasPairTogether = await checkPairTogether(
