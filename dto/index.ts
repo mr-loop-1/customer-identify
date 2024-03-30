@@ -8,7 +8,7 @@ import {
 import { Transform } from "class-transformer";
 
 export default class RequestDTO {
-    @IsPhoneNumber("IN", { message: "Invalid phone number" })
+    @IsPhoneNumber("IN", { message: "Invalid Indian phone number" })
     @Transform(({ value }: { value: Number }) => {
         if (typeof value !== "number") {
             const error = new ValidationError();
