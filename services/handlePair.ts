@@ -12,6 +12,8 @@ const handlePair = async (
         inputs.phoneNumber
     );
     const emailMatchCustomer = await getCustomer("email", inputs.email);
+    console.log("🚀 ~ emailMatchCustomer:", emailMatchCustomer);
+    console.log("🚀 ~ phoneMatchCustomer:", phoneMatchCustomer);
 
     let primaryId;
 
@@ -23,11 +25,23 @@ const handlePair = async (
             //* chain others too into that - relink chain
             primaryId = await handleDivergingPair(customer1, customer2);
         } else {
-            const hasPairTogether = checkPairTogether(
+            const hasPairTogether = await checkPairTogether(
                 customer1,
                 inputs.phoneNumber,
                 inputs.email
             );
+            if (hasPairTogether) {
+                primaryId = customer1.id;
+            } else {
+                const newCustomer = {
+                    phoneNumber: inputs.phoneNumber,
+                    email: inputs.email,
+                    linkedId: customer1.id,
+                    linkPrecedence: LinkPrecedenceEnum.secondary,
+                };
+                const customer = await createCustomer(newCustomer);
+                primaryId = customer?.id;
+            }
         }
         primaryId = customer1?.id;
     } else if (phoneMatchCustomer) {

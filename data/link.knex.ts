@@ -1,5 +1,5 @@
 import { knex } from "../database";
-import { ICustomer } from "../interfaces/index";
+import { ICustomer, LinkPrecedenceEnum } from "../interfaces/index";
 
 export const updateLinkSecondary = async (
     primaryId,
@@ -9,6 +9,7 @@ export const updateLinkSecondary = async (
 
     query.where("id", secondaryId);
     query.update("linkedId", primaryId);
+    query.update("linkPrecedence", LinkPrecedenceEnum.secondary);
 
     await query;
 

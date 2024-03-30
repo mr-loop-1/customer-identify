@@ -12,9 +12,7 @@ export const getCustomer = async (
 ): Promise<ICustomer | undefined> => {
     const query = knex<ICustomer>("customers");
 
-    query
-        .where(propName, value)
-        .where("linkPrecedence", LinkPrecedenceEnum.primary);
+    query.where(propName, value);
 
     return await query.first();
 };
