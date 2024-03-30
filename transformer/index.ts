@@ -34,7 +34,7 @@ const transform = (
                 (email) => email != null || email != undefined
             ),
             phoneNumbers: [...new Set(phoneNumbers)].filter(
-                (phone) => phone != null || phoneNumbers != undefined
+                (phone) => phone != null || phone != undefined
             ),
             secondaryContactIds: ids.filter(
                 (id) => id != null || id != undefined
