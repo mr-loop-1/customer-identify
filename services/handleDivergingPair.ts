@@ -17,7 +17,7 @@ const handleDivergingPair = async (
     await updateLinkMany(primaryId, danglingId);
     await updateLinkSecondary(primaryId, danglingId);
 
-    return Promise.resolve();
+    return;
 };
 
 export default handleDivergingPair;

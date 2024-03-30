@@ -1,6 +1,7 @@
 import type { Knex } from "knex";
 import path from "path";
 import { config as env } from "dotenv";
+import { knexSnakeCaseMappers } from "objection";
 
 env();
 
@@ -20,6 +21,7 @@ const config: { [key: string]: Knex.Config } = {
             directory: path.join(__dirname, "database/migrations"),
             tableName: "knex_migrations",
         },
+        ...knexSnakeCaseMappers(),
     },
 
     production: {
@@ -39,6 +41,7 @@ const config: { [key: string]: Knex.Config } = {
             directory: path.join(__dirname, "database/migrations"),
             tableName: "knex_migrations",
         },
+        ...knexSnakeCaseMappers(),
     },
 };
 

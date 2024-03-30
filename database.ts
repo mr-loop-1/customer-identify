@@ -1,4 +1,8 @@
 import Knex from "knex";
+import { knexSnakeCaseMappers } from "objection";
+import { config as env } from "dotenv";
+
+env();
 
 export const knex = Knex({
     client: "mysql2",
@@ -9,4 +13,5 @@ export const knex = Knex({
         password: process.env.DB_PASSWORD,
         database: process.env.DB_NAME,
     },
+    ...knexSnakeCaseMappers(),
 });

@@ -29,7 +29,7 @@ const middleware = async (req, res, next) => {
     //     // req.info.
     // }
 
-    res.json("success");
+    // res.json("success");
     next();
 };
 

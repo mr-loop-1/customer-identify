@@ -3,15 +3,16 @@ import { IRequest, LinkPrecedenceEnum } from "../interfaces/index";
 import handleDivergingPair from "./handleDivergingPair";
 
 const handlePair = async (inputs: IRequest): Promise<void> => {
+    console.log("🚀 ~ handlePair ~ inputs:", inputs);
     const phoneMatchCustomer = await getCustomer(
         "phoneNumber",
-        inputs.phoneNumber,
-        "primary"
+        inputs.phoneNumber
     );
-    const emailMatchCustomer = await getCustomer(
-        "email",
-        inputs.email,
-        "primary"
+    const emailMatchCustomer = await getCustomer("email", inputs.email);
+    console.log(
+        "🚀 ~ handlePair ~ emailMatchCustomer:",
+        phoneMatchCustomer,
+        emailMatchCustomer
     );
 
     if (phoneMatchCustomer && emailMatchCustomer) {
@@ -45,7 +46,7 @@ const handlePair = async (inputs: IRequest): Promise<void> => {
         await createCustomer(newCustomer);
     }
 
-    return Promise.resolve();
+    return;
 };
 
 export default handlePair;

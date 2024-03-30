@@ -1,20 +1,19 @@
 import { knex } from "../database";
-import { ICustomer } from "../interfaces/index";
+import { ICustomer, LinkPrecedenceEnum } from "../interfaces/index";
 
 export const identifyCustomer = async (
     propName,
     value
 ): Promise<ICustomer[]> => {
     const query = knex
-        .select("mainCustomer.*", "secondaryCustomer.id AS secondaryId")
+        .select("mainCustomer.*", "linkCustomer.id AS secondaryId")
         .from("customers AS mainCustomer")
-        .where(propName, value)
-        .where("linkPrecedence", "primary")
+        .where(`mainCustomer.${propName}`, value)
+        .where("mainCustomer.linkPrecedence", LinkPrecedenceEnum.primary)
         .leftJoin(
             "customers AS linkCustomer",
-            "customers.id",
-            "customers.linkedId"
+            "mainCustomer.id",
+            "linkCustomer.linkedId"
         );
-
     return await query;
 };

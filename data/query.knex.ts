@@ -1,18 +1,20 @@
 import { knex } from "../database";
-import { ICustomer, ICustomerInsert } from "../interfaces/index";
+import {
+    ICustomer,
+    ICustomerInsert,
+    LinkPrecedenceEnum,
+} from "../interfaces/index";
 
 export const getCustomer = async (
     propName: string,
-    value: any,
-    linkPrecendence: string
+    value: any
+    // linkPrecendence: string
 ): Promise<ICustomer | undefined> => {
     const query = knex<ICustomer>("customers");
 
-    query.where(propName, value);
-
-    if (linkPrecendence) {
-        query.where("linkPrecedence", linkPrecendence);
-    }
+    query
+        .where(propName, value)
+        .where("linkPrecedence", LinkPrecedenceEnum.primary);
 
     return await query.first();
 };
