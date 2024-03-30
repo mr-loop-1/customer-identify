@@ -3,7 +3,7 @@ import { IRequest, LinkPrecedenceEnum } from "../interfaces/index";
 import { getPrimaryCustomer, getPrimaryId } from "./getPrimaryCustomer";
 import handleDivergingPair from "./handleDivergingPair";
 
-const handlePair = async (inputs: IRequest): Promise<any> => {
+const handlePair = async (inputs: IRequest): Promise<number | undefined> => {
     console.log("🚀 ~ handlePair ~ inputs:", inputs);
     const phoneMatchCustomer = await getCustomer(
         "phoneNumber",

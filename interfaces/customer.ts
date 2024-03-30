@@ -1,6 +1,6 @@
 export enum LinkPrecedenceEnum {
-    primary = "Primary",
-    secondary = "Secondary",
+    primary = "primary",
+    secondary = "secondary",
 }
 
 export interface ICustomer {

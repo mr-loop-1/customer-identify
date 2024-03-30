@@ -1,16 +1,19 @@
 import { createCustomer, getCustomer } from "../data/index";
 import { LinkPrecedenceEnum } from "../interfaces/index";
+import { getPrimaryId } from "./getPrimaryCustomer";
 
-const handleOne = async (propName, inputs): Promise<void> => {
+const handleOne = async (propName, inputs): Promise<number | undefined> => {
     const matchCustomer = await getCustomer(propName, inputs[propName]);
-    if (!matchCustomer) {
-        const newCustomer = {
-            [propName]: inputs[propName],
-            linkPrecedence: LinkPrecedenceEnum.primary,
-        };
-        await createCustomer(newCustomer);
+    if (matchCustomer) {
+        return getPrimaryId(matchCustomer);
     }
-    return;
+    const newCustomer = {
+        [propName]: inputs[propName],
+        linkPrecedence: LinkPrecedenceEnum.primary,
+    };
+    const customer = await createCustomer(newCustomer);
+
+    return customer?.id;
 };
 
 export default handleOne;

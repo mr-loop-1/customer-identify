@@ -4,28 +4,27 @@ import handlePair from "../services/handlePair";
 import transform from "../transformer/index";
 
 const controller = async (req, res, next) => {
-    let results, data;
+    let results, data, primaryId;
     console.log("here2");
     try {
         if (req.body?.phoneNumber && req.body?.email) {
-            await handlePair(req.body);
+            primaryId = await handlePair(req.body);
             //? Not fetching data above since concurrent requests could render it outdated
-            results = await identifyCustomer(
-                "phoneNumber",
-                req.body.phoneNumber
-            );
+            // results = await identifyCustomer(
+            //     "phoneNumber",
+            //     req.body.phoneNumber
+            // );
         } else if (req.body?.phoneNumber) {
-            await handleOne("phoneNumber", req.body);
-            results = await identifyCustomer(
-                "phoneNumber",
-                req.body.phoneNumber
-            );
+            primaryId = await handleOne("phoneNumber", req.body);
+            // results = await identifyCustomer(
+            //     "phoneNumber",
+            //     req.body.phoneNumber
+            // );
         } else {
-            console.log("here3");
-            await handleOne("email", req.body);
-            console.log("here4");
-            results = await identifyCustomer("email", req.body.email);
+            primaryId = await handleOne("email", req.body);
+            // results = await identifyCustomer("email", req.body.email);
         }
+        results = primaryId && (await identifyCustomer(primaryId));
         console.log(results);
         // data = transform(results);
     } catch (err) {
