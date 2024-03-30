@@ -14,7 +14,7 @@ app.use(bodyParser.json());
 app.use("/identify", identifyRouter);
 
 app.use((req: Request, res: Response) => {
-    res.status(404).json("Only /identify is defined");
+    res.status(404).json("Only POST /identify is defined");
 });
 
 app.listen(process.env.PORT || 3500, () => {
