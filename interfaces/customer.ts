@@ -20,3 +20,9 @@ export interface ICustomerInsert {
     linkedId?: number;
     linkPrecedence: LinkPrecedenceEnum;
 }
+
+export interface ICustomerFull extends ICustomer {
+    secondaryId?: number;
+    pairEmail?: string;
+    pairPhoneNumber?: number;
+}

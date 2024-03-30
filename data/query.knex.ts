@@ -32,8 +32,9 @@ export const getCustomerById = async (
 export const createCustomer = async (
     data: ICustomerInsert
 ): Promise<ICustomer | undefined> => {
-    const query = knex<ICustomer>("customers");
-    query.insert(data).onConflict().ignore();
+    const query = knex("customers");
+    query.insert<number[]>(data);
 
-    return await query.first();
+    const customerId = await query;
+    return customerId[0];
 };

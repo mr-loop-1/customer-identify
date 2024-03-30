@@ -1,9 +1,11 @@
 import { createCustomer, getCustomer } from "../data/index";
 import { IRequest, LinkPrecedenceEnum } from "../interfaces/index";
-import { getPrimaryCustomer, getPrimaryId } from "./getPrimaryCustomer";
+import { checkPairTogether, getPrimaryCustomer, getPrimaryId } from "./utils";
 import handleDivergingPair from "./handleDivergingPair";
 
-const handlePair = async (inputs: IRequest): Promise<number | undefined> => {
+const handlePair = async (
+    inputs: IRequest & { phoneNumber: number; email: string }
+): Promise<number | undefined> => {
     console.log("🚀 ~ handlePair ~ inputs:", inputs);
     const phoneMatchCustomer = await getCustomer(
         "phoneNumber",
@@ -20,6 +22,12 @@ const handlePair = async (inputs: IRequest): Promise<number | undefined> => {
             //* convert younger into secondary
             //* chain others too into that - relink chain
             primaryId = await handleDivergingPair(customer1, customer2);
+        } else {
+            const hasPairTogether = checkPairTogether(
+                customer1,
+                inputs.phoneNumber,
+                inputs.email
+            );
         }
         primaryId = customer1?.id;
     } else if (phoneMatchCustomer) {
