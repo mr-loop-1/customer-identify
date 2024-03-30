@@ -1,5 +1,5 @@
-import { createCustomer, getCustomer } from "../data/index.ts";
-import { LinkPrecedenceEnum } from "../interfaces/index.ts";
+import { createCustomer, getCustomer } from "../data/index";
+import { LinkPrecedenceEnum } from "../interfaces/index";
 
 const handleOne = async (propName, inputs): Promise<void> => {
     const matchCustomer = await getCustomer(

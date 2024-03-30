@@ -1,3 +1,3 @@
-export * from "./identify.knex.ts";
-export * from "./link.knex.ts";
-export * from "./query.knex.ts";
+export * from "./identify.knex";
+export * from "./link.knex";
+export * from "./query.knex";

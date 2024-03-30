@@ -1,3 +1,7 @@
-const transform = async (results) => {};
+const transform = async (results) => {
+    return {
+        id: results[0].mainCustomer.id,
+    };
+};
 
 export default transform;

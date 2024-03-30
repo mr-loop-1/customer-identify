@@ -1,5 +1,5 @@
-import { updateLinkMany, updateLinkSecondary } from "../data/index.ts";
-import { ICustomer } from "../interfaces/index.ts";
+import { updateLinkMany, updateLinkSecondary } from "../data/index";
+import { ICustomer } from "../interfaces/index";
 
 const handleDivergingPair = async (
     customer1: ICustomer,

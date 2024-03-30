@@ -1,5 +1,5 @@
-import { knex } from "../database.ts";
-import { ICustomer } from "../interfaces/index.ts";
+import { knex } from "../database";
+import { ICustomer } from "../interfaces/index";
 
 export const identifyCustomer = async (
     propName,

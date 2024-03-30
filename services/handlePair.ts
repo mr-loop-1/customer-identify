@@ -1,6 +1,6 @@
-import { createCustomer, getCustomer } from "../data/index.ts";
-import { IRequest, LinkPrecedenceEnum } from "../interfaces/index.ts";
-import handleDivergingPair from "./handleDivergingPair.ts";
+import { createCustomer, getCustomer } from "../data/index";
+import { IRequest, LinkPrecedenceEnum } from "../interfaces/index";
+import handleDivergingPair from "./handleDivergingPair";
 
 const handlePair = async (inputs: IRequest): Promise<void> => {
     const phoneMatchCustomer = await getCustomer(

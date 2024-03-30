@@ -1,7 +1,7 @@
-import { identifyCustomer } from "../data/index.ts";
-import handleOne from "../services/handleOne.ts";
-import handlePair from "../services/handlePair.ts";
-import transform from "../transformer/index.ts";
+import { identifyCustomer } from "../data/index";
+import handleOne from "../services/handleOne";
+import handlePair from "../services/handlePair";
+import transform from "../transformer/index";
 
 const controller = async (req, res, next) => {
     let results, data;
