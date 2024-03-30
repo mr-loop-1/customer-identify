@@ -1,11 +1,12 @@
+import { Request, Response } from "express";
+
 import { getCustomerById, identifyCustomer } from "../data/index";
 import handleOne from "../services/handleOne";
 import handlePair from "../services/handlePair";
 import transform from "../transformer/index";
 
-const controller = async (req, res) => {
+const controller = async (req: Request, res: Response) => {
     let results, primaryId, primary;
-    console.log("here2");
     try {
         if (req.body?.phoneNumber && req.body?.email) {
             primaryId = await handlePair(req.body);

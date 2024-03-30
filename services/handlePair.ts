@@ -6,14 +6,11 @@ import handleDivergingPair from "./handleDivergingPair";
 const handlePair = async (
     inputs: IRequest & { phoneNumber: number; email: string }
 ): Promise<number | undefined> => {
-    console.log("🚀 ~ handlePair ~ inputs:", inputs);
     const phoneMatchCustomer = await getCustomer(
         "phoneNumber",
         inputs.phoneNumber
     );
     const emailMatchCustomer = await getCustomer("email", inputs.email);
-    console.log("🚀 ~ emailMatchCustomer:", emailMatchCustomer);
-    console.log("🚀 ~ phoneMatchCustomer:", phoneMatchCustomer);
 
     let primaryId;
 
@@ -23,6 +20,7 @@ const handlePair = async (
         if (customer1.id !== customer2.id) {
             primaryId = await handleDivergingPair(customer1, customer2);
         } else {
+            //? COMMENTED
             // const hasPairTogether = await checkPairTogether(
             //     customer1,
             //     inputs.phoneNumber,

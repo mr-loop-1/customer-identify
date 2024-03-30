@@ -1,4 +1,10 @@
-const transform = (primary, results) => {
+import { ICustomer, ICustomerFull } from "interfaces";
+import { IResponse } from "interfaces/response";
+
+const transform = (
+    primary: ICustomer,
+    results: ICustomerFull[] | undefined
+): IResponse => {
     const emails = results
         ? [
               ...results.map((customer) => {
@@ -24,13 +30,15 @@ const transform = (primary, results) => {
     return {
         contact: {
             primaryContatctId: primary.id,
-            existingEmail: [...new Set(emails)].filter(
-                (email) => email != null
+            emails: [...new Set(emails)].filter(
+                (email) => email != null || email != undefined
             ),
             phoneNumbers: [...new Set(phoneNumbers)].filter(
-                (phone) => phone != null
+                (phone) => phone != null || phoneNumbers != undefined
             ),
-            secondaryContactIds: ids.filter((id) => id != null),
+            secondaryContactIds: ids.filter(
+                (id) => id != null || id != undefined
+            ),
         },
     };
 };

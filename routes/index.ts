@@ -4,6 +4,6 @@ import controller from "../controllers/index";
 
 const router = Router();
 
-router.get("/", middleware, controller);
+router.post("/", middleware, controller);
 
 export default router;

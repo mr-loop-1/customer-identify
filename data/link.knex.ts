@@ -2,8 +2,8 @@ import { knex } from "../database";
 import { ICustomer, LinkPrecedenceEnum } from "../interfaces/index";
 
 export const updateLinkSecondary = async (
-    primaryId,
-    secondaryId
+    primaryId: number,
+    secondaryId: number
 ): Promise<void> => {
     const query = knex<ICustomer>("customers");
 
@@ -16,7 +16,10 @@ export const updateLinkSecondary = async (
     return;
 };
 
-export const updateLinkMany = async (primaryId, linkId): Promise<void> => {
+export const updateLinkMany = async (
+    primaryId: number,
+    linkId: number
+): Promise<void> => {
     const query = knex<ICustomer>("customers");
 
     query.where("linkedId", linkId);
