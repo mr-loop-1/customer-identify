@@ -4,7 +4,7 @@ import { ICustomer } from "../interfaces/index";
 const handleDivergingPair = async (
     customer1: ICustomer,
     customer2: ICustomer
-): Promise<void> => {
+): Promise<number> => {
     const [olderCustomer, newCustomer] =
         customer1.createdAt < customer2.createdAt
             ? [customer1, customer2]
@@ -17,7 +17,7 @@ const handleDivergingPair = async (
     await updateLinkMany(primaryId, danglingId);
     await updateLinkSecondary(primaryId, danglingId);
 
-    return;
+    return primaryId;
 };
 
 export default handleDivergingPair;

@@ -19,10 +19,21 @@ export const getCustomer = async (
     return await query.first();
 };
 
-export const createCustomer = async (data: ICustomerInsert): Promise<void> => {
+export const getCustomerById = async (
+    id: any
+): Promise<ICustomer | undefined> => {
     const query = knex<ICustomer>("customers");
-    query.insert(data);
-    await query;
 
-    return Promise.resolve();
+    query.where("id", id);
+
+    return await query.first();
+};
+
+export const createCustomer = async (
+    data: ICustomerInsert
+): Promise<ICustomer | undefined> => {
+    const query = knex<ICustomer>("customers");
+    query.insert(data).onConflict().ignore();
+
+    return await query.first();
 };

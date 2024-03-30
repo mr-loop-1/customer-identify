@@ -12,7 +12,7 @@ export const updateLinkSecondary = async (
 
     await query;
 
-    return Promise.resolve();
+    return;
 };
 
 export const updateLinkMany = async (primaryId, linkId): Promise<void> => {
@@ -23,5 +23,5 @@ export const updateLinkMany = async (primaryId, linkId): Promise<void> => {
 
     await query;
 
-    return Promise.resolve();
+    return;
 };
